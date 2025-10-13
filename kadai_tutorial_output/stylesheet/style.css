@@ -156,7 +156,9 @@ p {
 .about::after {
   content: "私たちについて";
 }
-
+ .about_us_bg {
+   background-color: #FFE6A5;
+ }
 
 
 
