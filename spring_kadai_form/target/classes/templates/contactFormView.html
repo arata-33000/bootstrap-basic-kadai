@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>お問い合わせフォーム</title>
+    <style>
+        /* 各項目の行の設定 */
+        .form-group {
+            margin-bottom: 15px; /* 行の間の余白 */
+            display: flex;       /* 横並びにする */
+            align-items: flex-start; /* 縦方向の揃え（上揃え） */
+        }
+
+        /* ラベルの横幅を固定して、入力欄の開始位置を揃える */
+        label {
+            width: 150px;        /* ラベルの幅を固定 */
+            display: inline-block;
+        }
+
+        /* エラーメッセージを改行して入力欄の下に出すための枠 */
+        .input-container {
+            display: flex;
+            flex-direction: column; /* 入力欄とエラーを縦に並べる */
+        }
+    </style>
+</head>
+<body>
+    <h2>お問い合わせフォーム</h2>
+
+    <form th:action="@{/confirm}" method="post" th:object="${contactForm}">
+        
+        <div class="form-group">
+            <label for="name">お名前</label>
+            <div class="input-container">
+                <input type="text" th:field="*{name}">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <div class="input-container">
+                <input type="text" th:field="*{email}">
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="message">お問い合わせ内容</label>
+            <div class="input-container">
+                <textarea th:field="*{message}" cols="30" rows="10"></textarea>
+                <div th:if="${#fields.hasErrors('message')}" th:errors="*{message}" style="color: red;"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div style="margin-left: 150px;"> <button type="submit">送信</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

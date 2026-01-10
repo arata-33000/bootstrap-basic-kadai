@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>確認画面</title>
+</head>
+<body>
+    <h1>入力内容の確認</h1>
+    <p>
+        <strong>お名前：</strong>
+        <span th:text="${contactForm.getName()}"></span>
+    </p>
+    <p>
+        <strong>メールアドレス：</strong>
+        <span th:text="${contactForm.getEmail()}"></span>
+    </p>
+    <p>
+        <strong>お問い合わせ内容：</strong><br>
+        <span th:text="${contactForm.getMessage()}"></span>
+    </p>
+</body>
+</html>
